@@ -44,7 +44,7 @@ affiliation_labeller = function(variable, value) {
 ```
 
 ## Create the plot
-```{r, warning = FALSE, message = FALSE}
+```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
 pres_plot =
   ggplot(pres,
          aes(x = inauguration_year,
