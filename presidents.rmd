@@ -9,9 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Load the data
-```{r}
+## Load the library
+```{r, warning = FALSE, message = FALSE}
 library(tidyverse)
+```
+
+## Load the data
+```{r, warning = FALSE, message = FALSE}
 pres_all = read_csv("presidents.csv")
 names(pres_all)
 ```
@@ -40,7 +44,7 @@ affiliation_labeller = function(variable, value) {
 ```
 
 ## Create the plot
-```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
+```{r, warning = FALSE, message = FALSE}
 pres_plot =
   ggplot(pres,
          aes(x = inauguration_year,
@@ -61,36 +65,20 @@ pres_plot =
          x = "Inauguration Year",
          y = "Age, in years") +
     theme(legend.position = "none")
-
-pres_plot
 ```
 
 ## Save without the trend lines
-```{r, warning = FALSE, message = FALSE}
-tiff("presidents.jpg",
-     units = "in",
-     width = 15,
-     height = 8,
-     res = 300)
-
+```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
 pres_plot
-
-dev.off()
+ggsave("presidents.jpg")
 ```
 
-## And with
-```{r, warning = FALSE, message = FALSE}
-tiff("presidents_lines.jpg",
-     units = "in",
-     width = 15,
-     height = 8,
-     res = 300)
-
+## And with lines
+```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
 pres_plot + geom_smooth(color = "black",
                         method = "lm",
                         level = 0)
-
-dev.off()
+ggsave("presidents_lines.jpg")
 ```
 
 ## Contact me
