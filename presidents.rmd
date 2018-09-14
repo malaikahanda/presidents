@@ -1,0 +1,102 @@
+---
+title: "Presidents"
+author: "Malaika Handa"
+date: "September 14, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load the data
+```{r}
+library(tidyverse)
+pres_all = read_csv("presidents.csv")
+names(pres_all)
+```
+
+## Add a column
+```{r}
+full_names = pres_all$president
+pres_all$last_name = sapply(strsplit(full_names, split = " "),
+                        function(x) x[length(x)])
+pres_all$last_name
+```
+
+## Reduce the data
+```{r}
+pres = pres_all[which(pres_all$affiliation != "None"), ]
+```
+
+## Create a labeller
+```{r}
+affiliation_labeller = function(variable, value) {
+  affiliation_names = list("P" = "Progressive",
+                           "C" = "Conservative")
+  label = affiliation_names[value]
+  return(label)
+}
+```
+
+## Create the plot
+```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
+pres_plot =
+  ggplot(pres,
+         aes(x = inauguration_year,
+             y = age)) +
+    geom_point(aes(color = affiliation),
+               size = 4.5) +
+    scale_colour_manual(values = c("C" = "red",
+                                   "P" = "blue",
+                                   "None" = "black")) +
+    geom_text(aes(label = last_name),
+              hjust = -0.2,
+              vjust = 0.3,
+              size = 3) +
+    coord_cartesian(xlim = c(1770, 2030)) + 
+    facet_wrap(~ affiliation,
+               labeller = affiliation_labeller) +
+    labs(title = "Age of presidents at inauguration, by party",
+         x = "Inauguration Year",
+         y = "Age, in years") +
+    theme(legend.position = "none")
+
+pres_plot
+```
+
+## Save without the trend lines
+```{r, warning = FALSE, message = FALSE}
+tiff("presidents.jpg",
+     units = "in",
+     width = 15,
+     height = 8,
+     res = 300)
+
+pres_plot
+
+dev.off()
+```
+
+## And with
+```{r, warning = FALSE, message = FALSE}
+tiff("presidents_lines.jpg",
+     units = "in",
+     width = 15,
+     height = 8,
+     res = 300)
+
+pres_plot + geom_smooth(color = "black",
+                        method = "lm",
+                        level = 0)
+
+dev.off()
+```
+
+## Contact me
+
+* [Twitter](https://twitter.com/malicodes)
+* [LinkedIn](https://www.linkedin.com/in/malaika-handa/)
+* [Resume](https://drive.google.com/file/d/1ammnktVHH-GdZ2UOsGCsUS_VM3w8csh8/view?usp=sharing)
+
+
