@@ -16,21 +16,25 @@ library(tidyverse)
 
 ## Load the data
 ```{r, warning = FALSE, message = FALSE}
-pres_all = read_csv("presidents.csv")
-names(pres_all)
+all = read_csv("presidents.csv")
+names(all)
 ```
 
 ## Add a column
 ```{r}
-full_names = pres_all$president
-pres_all$last_name = sapply(strsplit(full_names, split = " "),
+full_names = all$president
+all$last_name = sapply(strsplit(full_names, split = " "),
                         function(x) x[length(x)])
-pres_all$last_name
+all$last_name
 ```
 
 ## Reduce the data
 ```{r}
-pres = pres_all[which(pres_all$affiliation != "None"), ]
+affiliations = all[which(all$affiliation != "None"), ]
+post_1950 = all[which(all$inauguration_year > 1950), ]
+parties = all[which(!(all$party %in% c("Non-partisan",
+                                       "National Union",
+                                       "Federalist"))), ] # only one value for each of these parties
 ```
 
 ## Create a labeller
@@ -43,10 +47,10 @@ affiliation_labeller = function(variable, value) {
 }
 ```
 
-## Create the plot
+## Create a plot using the two affiliations
 ```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
-pres_plot =
-  ggplot(pres,
+affiliations_plot =
+  ggplot(affiliations,
          aes(x = inauguration_year,
              y = age)) +
     geom_point(aes(color = affiliation),
@@ -61,7 +65,7 @@ pres_plot =
     coord_cartesian(xlim = c(1770, 2030)) + 
     facet_wrap(~ affiliation,
                labeller = affiliation_labeller) +
-    labs(title = "Age of presidents at inauguration, by party",
+    labs(title = "Age of presidents at inauguration, by affiliation",
          x = "Inauguration Year",
          y = "Age, in years") +
     theme(legend.position = "none")
@@ -69,16 +73,66 @@ pres_plot =
 
 ## Save without the trend lines
 ```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
-pres_plot
-ggsave("presidents.jpg")
+affiliations_plot
+ggsave("affiliations.jpg")
 ```
 
 ## And with lines
 ```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
-pres_plot + geom_smooth(color = "black",
+affiliations_plot + geom_smooth(color = "black",
                         method = "lm",
                         level = 0)
-ggsave("presidents_lines.jpg")
+ggsave("affiliations_lines.jpg")
+```
+
+## Create a plot using the actual parties
+```{r, warning = FALSE, message = FALSE, fig.height = 12, fig.width = 15}
+party_plot =
+  ggplot(parties,
+         aes(x = inauguration_year,
+             y = age)) +
+    geom_point(aes(color = party),
+               size = 4.5) +
+    geom_text(aes(label = last_name),
+              hjust = -0.3,
+              vjust = 0.3,
+              size = 3) +
+    coord_cartesian(xlim = c(1770, 2030)) + 
+    facet_wrap(~ party,
+               nrow = 2) +
+    labs(title = "Age of presidents at inauguration, by party",
+         x = "Inauguration Year",
+         y = "Age, in years") +
+   theme(legend.position = "none")
+
+party_plot
+ggsave("parties.jpg")
+```
+
+## Create a plot using only data after 1950
+```{r, warning = FALSE, message = FALSE, fig.height = 8, fig.width = 15}
+post_1950_plot =
+  ggplot(post_1950,
+         aes(x = inauguration_year,
+             y = age)) +
+    geom_point(aes(color = party),
+               size = 6) +
+    geom_text(aes(label = last_name),
+              hjust = -0.35,
+              vjust = 0.3,
+              size = 5) +
+    coord_cartesian(xlim = c(1940, 2030)) +
+    scale_colour_manual(values = c("Republican" = "red",
+                                   "Democrat" = "blue")) +
+    facet_wrap(~ party,
+               ncol = 2) +
+    labs(title = "Age of presidents at inauguration, by party (post-1950)",
+         x = "Inauguration Year",
+         y = "Age, in years") +
+   theme(legend.position = "none")
+
+post_1950_plot
+ggsave("post_1950.jpg")
 ```
 
 ## Contact me

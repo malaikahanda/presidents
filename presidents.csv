@@ -1,46 +1,46 @@
-president,inauguration_year,age,age_years,age_days,affiliation
-George Washington,1789,57.18,57,67,None
-John Adams,1798,61.34,61,125,None
-Thomas Jefferson,1801,57.89,57,325,P
-James Madison,1809,57.97,57,353,P
-James Monroe,1817,58.85,58,310,None
-John Q. Adams,1825,57.65,57,236,P
-Andrew Jackson,1829,61.97,61,354,C
-Martin Van Buren,1837,54.24,54,89,P
-William H. Harrison,1841,68.06,68,23,P
-John Tyler,1841,51.02,51,6,P
-James K. Polk,1845,49.33,49,122,C
-Zachary Taylor,1849,64.27,64,100,P
-Millard Fillmore,1850,50.5,50,183,C
-Franklin Pierce,1853,48.28,48,101,C
-James Buchanan,1857,65.86,65,315,C
-Abraham Lincoln,1861,52.05,52,20,P
-Andrew Johnson,1865,56.29,56,107,C
-Ulysses S. Grant,1869,46.85,46,311,P
-Rutherford B. Hayes,1877,54.41,54,151,P
-James A. Garfield,1881,49.29,49,105,P
-Chester A. Arthur,1881,51.96,51,349,C
-Grover Cleveland,1885,47.96,47,351,C
-Benjamin Harrison,1889,55.54,55,196,P
-Grover Cleveland,1893,55.96,55,351,C
-William McKinley,1897,54.09,54,34,C
-Theodore Roosevelt,1901,42.88,42,322,P
-William H. Taft,1909,51.47,51,170,P
-Woodrow Wilson,1913,56.18,56,66,C
-Warren G. Harding,1921,55.33,55,122,C
-Calvin Coolidge,1923,51.08,51,29,C
-Herbert Hoover,1929,54.56,54,206,C
-Franklin D. Roosevelt,1933,51.09,51,33,P
-Harry S. Truman,1945,60.93,60,339,P
-Dwight D. Eisenhower,1953,62.27,62,98,C
-John F. Kennedy,1961,43.65,43,236,P
-Lyndon B. Johnson,1963,55.24,55,87,P
-Richard Nixon,1969,56.03,56,11,C
-Gerald Ford,1974,61.07,61,26,C
-Jimmy Carter,1977,52.3,52,111,P
-Ronald Reagan,1981,69.96,69,349,C
-George H. W. Bush,1989,64.61,64,222,C
-Bill Clinton,1993,46.42,46,154,P
-George W. Bush,2001,54.54,54,198,C
-Barack Obama,2009,47.46,47,169,P
-Donald Trump,2017,70.6,70,220,C
+president,inauguration_year,age,age_years,age_days,affiliation,party
+George Washington,1789,57.18,57,67,None,Non-partisan
+John Adams,1798,61.34,61,125,None,Federalist
+Thomas Jefferson,1801,57.89,57,325,P,Democratic Republican
+James Madison,1809,57.97,57,353,P,Democratic Republican
+James Monroe,1817,58.85,58,310,None,Democratic Republican
+John Q. Adams,1825,57.65,57,236,P,Democratic Republican
+Andrew Jackson,1829,61.97,61,354,C,Democrat
+Martin Van Buren,1837,54.24,54,89,P,Democrat
+William H. Harrison,1841,68.06,68,23,P,Whig
+John Tyler,1841,51.02,51,6,P,Whig
+James K. Polk,1845,49.33,49,122,C,Democrat
+Zachary Taylor,1849,64.27,64,100,P,Whig
+Millard Fillmore,1850,50.5,50,183,C,Whig
+Franklin Pierce,1853,48.28,48,101,C,Democrat
+James Buchanan,1857,65.86,65,315,C,Democrat
+Abraham Lincoln,1861,52.05,52,20,P,Republican
+Andrew Johnson,1865,56.29,56,107,C,National Union
+Ulysses S. Grant,1869,46.85,46,311,P,Republican
+Rutherford B. Hayes,1877,54.41,54,151,P,Republican
+James A. Garfield,1881,49.29,49,105,P,Republican
+Chester A. Arthur,1881,51.96,51,349,C,Republican
+Grover Cleveland,1885,47.96,47,351,C,Democrat
+Benjamin Harrison,1889,55.54,55,196,P,Republican
+Grover Cleveland,1893,55.96,55,351,C,Democrat
+William McKinley,1897,54.09,54,34,C,Republican
+Theodore Roosevelt,1901,42.88,42,322,P,Republican
+William H. Taft,1909,51.47,51,170,P,Republican
+Woodrow Wilson,1913,56.18,56,66,C,Democrat
+Warren G. Harding,1921,55.33,55,122,C,Republican
+Calvin Coolidge,1923,51.08,51,29,C,Republican
+Herbert Hoover,1929,54.56,54,206,C,Republican
+Franklin D. Roosevelt,1933,51.09,51,33,P,Democrat
+Harry S. Truman,1945,60.93,60,339,P,Democrat
+Dwight D. Eisenhower,1953,62.27,62,98,C,Republican
+John F. Kennedy,1961,43.65,43,236,P,Democrat
+Lyndon B. Johnson,1963,55.24,55,87,P,Democrat
+Richard Nixon,1969,56.03,56,11,C,Republican
+Gerald Ford,1974,61.07,61,26,C,Republican
+Jimmy Carter,1977,52.3,52,111,P,Democrat
+Ronald Reagan,1981,69.96,69,349,C,Republican
+George H. W. Bush,1989,64.61,64,222,C,Republican
+Bill Clinton,1993,46.42,46,154,P,Democrat
+George W. Bush,2001,54.54,54,198,C,Republican
+Barack Obama,2009,47.46,47,169,P,Democrat
+Donald Trump,2017,70.6,70,220,C,Republican
